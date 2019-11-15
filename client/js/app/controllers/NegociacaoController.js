@@ -3,17 +3,22 @@ class NegociacaoController {
     constructor() {
         
         let $ = document.querySelector.bind(document);
-        this.inputData = $('#data');
-        this.inputQuantidade = $('#quantidade');
-        this.inputValor = $('#valor');
+        this._inputData = $('#data');
+        this._inputQuantidade = $('#quantidade');
+        this._inputValor = $('#valor');
     }
 
     adiciona(event) {
         event.preventDefault();
 
-        console.log(this.inputData.value);
-        console.log(this.inputQuantidade.value);
-        console.log(this.inputValor.value);
+        // '2019-11-15'
+        let data = new Date(...this._inputData.value.split('-').map(function(item, index){
+            if(index == 1) {
+                return item - 1;
+            }
+            return item
+        }));
+        console.log(data);
     }
 
 }
